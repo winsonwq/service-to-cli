@@ -64,12 +64,43 @@ description: |
 4. **参数自解释**：`--user-id` 好过 `--uid`，`--expires-at` 好过 `--exp`。
 5. **文档即 prompt**：`--help` 的内容就是给 agent 的使用说明，要包含场景、参数说明、示例、常见错误。
 
-**输出**：每个 CLI 的：
-- 命令名称和参数设计
-- `--help` 文案（面向 agent 执行为目的）
-- exit code 约定
-- 输出 JSON schema
-- 幂等处理逻辑说明
+**输出示例**（直接复制修改使用）：
+
+```bash
+$ onboard-sale --help
+
+用法：onboard-sale --name <用户名> [--expires-at <过期时间>]
+
+新销售入职任务。幂等：重复执行返回已有数据。
+
+参数：
+  --name        用户名，自解释参数，必填
+  --expires-at  过期时间，ISO 格式，默认永不过期
+
+示例：
+  onboard-sale --name 张三
+  onboard-sale --name 张三 --expires-at 2026-12-31
+
+常见错误：
+  - name 已存在：返回已有数据，不创建新记录
+  - name 格式错误：返回错误信息，exit code 2
+```
+
+**exit code 约定**：
+- `0` — 成功
+- `1` — 一般错误（参数错误等）
+- `2` — 业务逻辑错误（资源不存在等）
+
+**输出 JSON schema**：
+```json
+// 成功
+{"status": "ok", "data": {"id": "...", "name": "..."}}
+
+// 失败（exit code 非 0）
+{"status": "error", "message": "具体错误描述"}
+```
+
+**幂等处理**：检查是否已存在，存在则返回已有数据，不报错
 
 ### 第三步：生成 Skill.md
 
@@ -115,4 +146,4 @@ description: |
 - [OpenClaw](https://github.com/openclaw/openclaw)
 - [mcporter](https://github.com/nicepkg/mcporter)
 
-更多 CLI 框架对比和 subprocess 安全调用模式，见 references/ 目录。
+CLI 框架选择建议：Python 用 Click，Node.js 用 oclif，Go 用 Cobra。

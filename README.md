@@ -26,9 +26,8 @@
 
 ```
 service-to-cli/
-├── SKILL.md                           # OpenClaw 技能文件
-└── references/
-    └── cli-frameworks.md              # CLI 框架对比和实现参考
+├── SKILL.md     # OpenClaw 技能文件
+└── README.md    # 整体说明
 ```
 
 ## 使用方法
