@@ -144,6 +144,6 @@ $ onboard-sale --help
 - [Agent-Native 概念](https://vercel.com/blog/agents)
 - [MCP 协议](https://modelcontextprotocol.io/)
 - [OpenClaw](https://github.com/openclaw/openclaw)
-- [mcporter](https://github.com/nicepkg/mcporter)
+- [mcporter](https://github.com/steipete/mcporter)
 
 CLI 框架选择建议：Python 用 Click，Node.js 用 oclif，Go 用 Cobra。

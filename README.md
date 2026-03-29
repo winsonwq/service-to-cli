@@ -44,7 +44,7 @@ service-to-cli/
 - [Agent-Native 概念](https://vercel.com/blog/agents)
 - [MCP 协议](https://modelcontextprotocol.io/)
 - [OpenClaw](https://github.com/openclaw/openclaw)
-- [mcporter](https://github.com/nicepkg/mcporter)
+- [mcporter](https://github.com/steipete/mcporter)
 
 ## License
 
